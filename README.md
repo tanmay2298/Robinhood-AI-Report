@@ -2,6 +2,18 @@
 
 Automatically generate a beautiful, AI-powered weekly PDF report of your Robinhood portfolio — with news, charts, analysis, and optional email delivery.
 
+## Sample Report
+
+![Overview — KPI cards and holdings table](assets/screenshot_1_overview.png)
+
+![Charts — portfolio allocation and P&L by holding](assets/screenshot_2_charts.png)
+
+![AI Analysis — per-stock breakdown and market context](assets/screenshot_3_analysis.png)
+
+A full sample PDF is available at [`assets/Sample_Report.pdf`](assets/Sample_Report.pdf).
+
+---
+
 ## What It Does
 
 Each time you run it, the tool:
@@ -82,6 +94,8 @@ python3 weekly_report_gen.py --no-open
 ```
 
 The PDF is saved to `Portfolio_Reports/report_YYYY-MM-DD.pdf`.
+
+> **First run — Robinhood 2FA:** If your Robinhood account has two-factor authentication enabled (SMS or authenticator app), you will be prompted to enter your 2FA code in the terminal on the first run. After a successful login, `robin_stocks` caches a session token locally so subsequent runs do not require the code again until the token expires.
 
 ---
 
@@ -190,8 +204,12 @@ robinhood-report/
 ├── requirements.txt       # Python dependencies
 ├── README.md              # This file
 ├── EMAIL_SETUP.md         # Detailed email configuration guide
+├── SCHEDULER_README.md    # Scheduler setup and management guide
 ├── PRIVACY_AND_FAQ.md     # Data privacy, costs, and API details
-└── Portfolio_Reports/     # Output directory (auto-created)
+├── assets/                # Screenshots and sample report
+│   ├── Sample_Report.pdf
+│   └── screenshot_*.png
+└── Portfolio_Reports/     # Output directory (auto-created, gitignored)
     └── report_YYYY-MM-DD.pdf
 ```
 

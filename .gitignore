@@ -27,6 +27,10 @@ credentials.*
 *.pdf
 Portfolio_Reports/
 
+# ── Allow the assets directory (screenshots + sample report) ─────────────
+!assets/
+!assets/**
+
 # ── Robinhood session tokens ──────────────────────────────────────────────
 # robin_stocks stores auth tokens here; never commit these
 .tokens/
