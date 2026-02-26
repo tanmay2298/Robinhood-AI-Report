@@ -1,0 +1,52 @@
+# ── Python ────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ── Virtual environment ───────────────────────────────────────────────────
+venv/
+env/
+.venv/
+.env/
+
+# ── Environment / secrets ─────────────────────────────────────────────────
+.env
+.env.*
+*.env
+secrets.sh
+credentials.*
+
+# ── Generated reports (contain personal financial data) ───────────────────
+*.pdf
+Portfolio_Reports/
+
+# ── Robinhood session tokens ──────────────────────────────────────────────
+# robin_stocks stores auth tokens here; never commit these
+.tokens/
+
+# ── macOS ─────────────────────────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# ── Claude Code project settings ─────────────────────────────────────────
+.claude/
+
+# ── Logs ──────────────────────────────────────────────────────────────────
+*.log
+logs/
+
+# ── IDE / Editor ──────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
