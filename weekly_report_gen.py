@@ -18,7 +18,7 @@ from tavily import TavilyClient
 
 # Email functionality (optional)
 try:
-    from email_sender import send_report_email
+    from email_sender import send_report_email, send_error_email
     EMAIL_AVAILABLE = True
 except ImportError:
     EMAIL_AVAILABLE = False
@@ -841,4 +841,13 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    import traceback
+    try:
+        main()
+    except Exception as e:
+        tb = traceback.format_exc()
+        print(f"\n❌ Fatal error: {e}")
+        print(tb)
+        if EMAIL_AVAILABLE:
+            send_error_email(str(e), tb)
+        sys.exit(1)

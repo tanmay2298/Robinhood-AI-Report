@@ -125,6 +125,56 @@ Your Portfolio Report Bot
         return False
 
 
+def send_error_email(error_message, traceback_str=None):
+    """
+    Send an error notification email when the report fails.
+
+    Args:
+        error_message: Short description of the error
+        traceback_str: Full traceback string (optional)
+    """
+    sender_email = os.environ.get("EMAIL_SENDER")
+    sender_password = os.environ.get("EMAIL_PASSWORD")
+    smtp_host = os.environ.get("EMAIL_SMTP_HOST", "smtp.gmail.com")
+    smtp_port = int(os.environ.get("EMAIL_SMTP_PORT", "587"))
+    recipient_email = os.environ.get("EMAIL_RECIPIENT", sender_email)
+
+    if not sender_email or not sender_password:
+        print("Error email not sent: EMAIL_SENDER or EMAIL_PASSWORD not configured.")
+        return False
+
+    msg = MIMEMultipart()
+    msg['From'] = sender_email
+    msg['To'] = recipient_email
+    msg['Subject'] = f"⚠️ Portfolio Report Failed - {datetime.now().strftime('%B %d, %Y')}"
+
+    body = f"""Your weekly portfolio report failed to generate.
+
+Date: {datetime.now().strftime('%B %d, %Y %H:%M:%S')}
+
+Error:
+{error_message}
+"""
+    if traceback_str:
+        body += f"\nFull traceback:\n{traceback_str}"
+
+    body += "\nPlease check the script and re-run manually if needed."
+
+    msg.attach(MIMEText(body, 'plain'))
+
+    try:
+        server = smtplib.SMTP(smtp_host, smtp_port)
+        server.starttls()
+        server.login(sender_email, sender_password)
+        server.send_message(msg)
+        server.quit()
+        print(f"⚠️  Error notification emailed to {recipient_email}")
+        return True
+    except Exception as e:
+        print(f"❌ Failed to send error notification email: {e}")
+        return False
+
+
 def test_email_config():
     """
     Test email configuration without sending a report.
