@@ -150,7 +150,8 @@ PORTFOLIO SUMMARY:
             news_text += f"  {i}. {article[:300]}...\n"
 
     prompt = f"""
-You are a professional portfolio analyst. Today is {datetime.now().strftime('%A, %B %d, %Y')}.
+You are a professional portfolio analyst at Goldman Sachs with 20 years of experience screening stocks for high-net-worth clients. 
+Today is {datetime.now().strftime('%A, %B %d, %Y')}.
 
 STRICT FORMATTING RULES — follow these exactly every week, no exceptions:
 - Use the section headers and sub-headers exactly as specified below.
