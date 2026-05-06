@@ -12,6 +12,8 @@ Automatically generate a beautiful, AI-powered weekly PDF report of your Robinho
 
 A full sample PDF is available at [`assets/Sample_Report.pdf`](assets/Sample_Report.pdf).
 
+For pipeline internals, architecture, and configuration details see [TECHNICAL.md](TECHNICAL.md).
+
 ---
 
 ## What It Does
@@ -203,6 +205,7 @@ robinhood-report/
 ├── run_report.sh          # Shell wrapper for scheduled execution
 ├── requirements.txt       # Python dependencies
 ├── README.md              # This file
+├── TECHNICAL.md           # Technical design and architecture
 ├── EMAIL_SETUP.md         # Detailed email configuration guide
 ├── SCHEDULER_README.md    # Scheduler setup and management guide
 ├── PRIVACY_AND_FAQ.md     # Data privacy, costs, and API details
